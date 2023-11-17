@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 
-export default function TaskItem({ task, setSessionTime, setSessionTaskId }) {
+export default function TaskItem({ tasks, setTasks, task, setSessionTime, setSessionTaskId }) {
     // State to hold the selected time from the slider
     const [taskTime, setTaskTime] = useState(20);
 
@@ -13,6 +13,13 @@ export default function TaskItem({ task, setSessionTime, setSessionTaskId }) {
         setSessionTime(taskTime);
         setSessionTaskId(task.id)
     };
+
+
+    const handleDeleteClick = () => {
+        setTasks(tasks.filter(t => t.id !== task.id));
+        console.log("delete button clicked!")
+    }
+
 
     return (
         <div className="TaskItem">
@@ -27,6 +34,7 @@ export default function TaskItem({ task, setSessionTime, setSessionTaskId }) {
                 />
                 <span>{taskTime} seconds</span>
                 <button onClick={handleStartClick}>Start</button>
+                <button onClick={handleDeleteClick}>Delete</button>
             </div>
             <div>
                 {task.pomodoros.map((pomodoro, pomodoroIndex) => (

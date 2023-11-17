@@ -1,6 +1,7 @@
 
 import { v4 as uuidv4 } from 'uuid';
-export default function AddTaskForm({ setTasks, setTaskName, taskName }) {
+import { useState } from 'react';
+export default function AddTaskForm({ setTasks }) {
 
 
     const addTask = (e) => {
@@ -19,7 +20,7 @@ export default function AddTaskForm({ setTasks, setTaskName, taskName }) {
         setTaskName(e.target.value)
     }
 
-
+    const [taskName, setTaskName] = useState('')
     return (
 
         <div className="AddTaskForm">

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import TaskList from './TaskList';
-import AddTaskForm from './AddTaskForm';
+
 
 
 function App() {
@@ -21,13 +21,23 @@ function App() {
     }
   ];
 
-  const [tasks, setTasks] = useState(exampleTasks)
+
+  const [tasks, setTasks] = useState(() => {
+    // Retrieve tasks from localStorage or set default
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks ? JSON.parse(savedTasks) : exampleTasks;
+  });
+
+  useEffect(() => {
+    // Save tasks to localStorage
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+
   const [taskName, setTaskName] = useState('')
   console.log(`tasks in app: ${tasks}`);
   return (
     <div className="App">
-
-      <AddTaskForm setTasks={setTasks} setTaskName={setTaskName} taskName={taskName} />
       <TaskList tasks={tasks} setTasks={setTasks} />
     </div>
   );
