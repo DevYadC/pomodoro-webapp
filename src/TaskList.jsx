@@ -1,29 +1,24 @@
-import TaskItem from "./TaskItem";
-import CountdownTimer from "./CountDownTimer";
+import TaskItem from "./TaskItem"
 
-import { useState } from 'react';
-import AddTaskForm from "./AddTaskForm";
-
-export default function TaskList({ tasks, setTasks }) {
+export default function TaskList({ setSessionTime, setSessionTaskId, tasks, setTasks, refresh, setRefresh }) {
 
 
-    const [sessionTime, setSessionTime] = useState(20);
-    const [sessionTaskId, setSessionTaskId] = useState(1);
-    console.log(`tasks in list: ${tasks}`);
 
     return (
         <div className="TaskList">
-            <h2>session time: {sessionTime}</h2>
-            <h2>current session id: {sessionTaskId}</h2>
-            <AddTaskForm setTasks={setTasks} />
             <ul>
                 {tasks.map((task) => (
-                    <TaskItem task={task} setSessionTime={setSessionTime} setSessionTaskId={setSessionTaskId} tasks={tasks} setTasks={setTasks} />
+                    <TaskItem
+                        tasks={tasks} setTasks={setTasks}
+                        setSessionTime={setSessionTime}
+                        setSessionTaskId={setSessionTaskId}
+                        task={task}
+                        refresh={refresh} setRefresh={setRefresh} />
                 ))}
             </ul>
-            <CountdownTimer sessionTime={sessionTime} sessionTaskId={sessionTaskId} tasks={tasks} setTasks={setTasks} />
         </div>
     )
+
 
 
 }

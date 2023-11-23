@@ -1,0 +1,9 @@
+.TaskItemForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.TaskFormButtons {
+    margin-bottom: 5px;
+}

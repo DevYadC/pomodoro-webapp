@@ -2,12 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import TaskList from './TaskList';
+import TaskApp from './TaskApp';
 
 
 
 function App() {
 
+  //starter task data 
   const exampleTasks = [
     {
       id: uuidv4(),
@@ -34,11 +35,11 @@ function App() {
   }, [tasks]);
 
 
-  const [taskName, setTaskName] = useState('')
-  console.log(`tasks in app: ${tasks}`);
+
+
   return (
     <div className="App">
-      <TaskList tasks={tasks} setTasks={setTasks} />
+      <TaskApp tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }

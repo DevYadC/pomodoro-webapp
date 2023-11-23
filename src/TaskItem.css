@@ -1,0 +1,33 @@
+.TaskItemLeft {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 177px;
+    align-items: center;
+}
+
+
+
+.TaskItem {
+    display: grid;
+    border: 1px solid black;
+}
+
+.TaskItemName {
+    grid-column: 1;
+    grid-row: 1;
+
+}
+
+.TaskItemPomodoros {
+    grid-column: 2;
+    grid-row: 1;
+
+
+}
+
+.TaskItemForm {
+    grid-column: 1;
+    grid-row: 2;
+
+}

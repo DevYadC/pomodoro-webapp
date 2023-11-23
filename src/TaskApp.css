@@ -1,0 +1,38 @@
+.TaskApp {
+    display: flex;
+    justify-content: space-around;
+    /* Spacing out the items */
+    flex-wrap: wrap;
+    /* Allows items to wrap onto the next line */
+    align-items: vertically;
+}
+
+/* Styles CountdownTimer */
+.CountdownTimer {
+    flex-basis: 48%;
+    /* Each takes almost half the width, allowing for some margin */
+    margin: 1%;
+    /* Optional: for spacing around items */
+}
+
+.TaskColumn {
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    flex-basis: 48%;
+    /* Adjust width as needed */
+    margin: 1%;
+    /* Optional: for spacing around items */
+    margin-top: 5%;
+}
+
+@media (max-width: 600px) {
+
+    .TaskColumn,
+    .CountdownTimer {
+        flex-basis: 100%;
+        /* Each item takes full width */
+    }
+}

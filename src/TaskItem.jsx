@@ -1,46 +1,44 @@
 
 import { useState } from 'react';
+import './TaskItem.css'
+import TaskItemName from './TaskItemName';
+import TaskItemForm from './TaskItemForm';
+import TaskItemPomodoros from './TaskItemPomodoros';
 
-export default function TaskItem({ tasks, setTasks, task, setSessionTime, setSessionTaskId }) {
+import Button from '@mui/material/Button';
+
+export default function TaskItem({ tasks, setTasks, task, setSessionTime, setSessionTaskId, refresh, setRefresh }) {
+
     // State to hold the selected time from the slider
     const [taskTime, setTaskTime] = useState(20);
 
-    const handleSliderChange = (event) => {
-        setTaskTime(event.target.value);
-    };
-
-    const handleStartClick = () => {
-        setSessionTime(taskTime);
-        setSessionTaskId(task.id)
-    };
-
-
-    const handleDeleteClick = () => {
-        setTasks(tasks.filter(t => t.id !== task.id));
-        console.log("delete button clicked!")
-    }
 
 
     return (
         <div className="TaskItem">
-            <div>
-                <span>{task.name}/{task.id}</span>
-                <input
-                    type="range"
-                    min="5"
-                    max="60"
-                    value={taskTime}
-                    onChange={handleSliderChange}
-                />
-                <span>{taskTime} seconds</span>
-                <button onClick={handleStartClick}>Start</button>
-                <button onClick={handleDeleteClick}>Delete</button>
+
+            <div className="TaskItemLeft">
+
+                <TaskItemName
+                    taskName={task.name} />
+
+                <TaskItemForm
+                    taskTime={taskTime} setTaskTime={setTaskTime}
+                    setSessionTaskId={setSessionTaskId}
+                    setSessionTime={setSessionTime}
+                    refresh={refresh} setRefresh={setRefresh}
+                    tasks={tasks} setTasks={setTasks}
+                    task={task} />
+
             </div>
-            <div>
-                {task.pomodoros.map((pomodoro, pomodoroIndex) => (
-                    <span key={pomodoroIndex}>🍅{pomodoro.time} seconds, </span>
-                ))}
-            </div>
+
+
+            <TaskItemPomodoros
+                task={task} />
+
+
+
+
         </div>
     );
 }

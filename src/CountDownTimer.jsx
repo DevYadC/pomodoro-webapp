@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import CircularProgressWithLabel from './CircularProgressWithLabel'
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
-function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks }) {
+import './CountDownTimer.css'
+
+function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh }) {
     const [count, setCount] = useState(sessionTime);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
         setCount(sessionTime);
-        setIsRunning(false);
-    }, [sessionTime]);
+        if (sessionTime > 0) {
+            setIsRunning(true);
+        }
+        else {
+            setIsRunning(false);
+        }
+    }, [sessionTime, refresh]);
 
     useEffect(() => {
         let intervalId;
@@ -32,7 +42,8 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks }) {
             }));
 
 
-            alert("Time Is Up!");
+            // Delay the alert to allow the state update and re-render
+            setTimeout(() => alert("Time Is Up!"), 0);
         }
 
         return () => {
@@ -54,11 +65,32 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks }) {
         setCount(sessionTime); // Reset the timer to the initial session time
     };
 
+    const handlePause = () => {
+        setIsRunning(false);
+    };
+    const progress = (count / sessionTime) * 100;
+    console.log(progress)
     return (
-        <div>
-            <h1>Countdown: {count} seconds</h1>
-            <button onClick={handleStart} disabled={isRunning}>Start</button>
-            <button onClick={handleReset}>Reset</button>
+        <div className='CountDownTimer'>
+            <div className='ProgressCircle'>
+                <Stack spacing={2} direction="row">
+                    <CircularProgressWithLabel value={progress ? progress : 100} count={count} />
+                </Stack>
+            </div>
+
+            <div className='CountDownTimerButtons'>
+
+                <Button onClick={handleStart} disabled={isRunning} variant="contained" color="success">
+                    Start
+                </Button>
+                <Button onClick={handlePause} disabled={!isRunning} variant="contained" color="error">
+                    Pause
+                </Button>
+                <Button onClick={handleReset} variant="contained" color="secondary">
+                    Reset
+                </Button>
+
+            </div>
         </div>
     );
 }

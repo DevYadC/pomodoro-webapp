@@ -1,0 +1,10 @@
+.CountDownTimer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.CountDownTimerButtons {
+    margin-top: 10px;
+}
