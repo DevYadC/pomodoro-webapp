@@ -1,6 +1,9 @@
 import './TaskItemForm.css'
+import { useState } from 'react';
+export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task }) {
 
-export default function TaskItemForm({ taskTime, setTaskTime, setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task, refresh }) {
+    // State to hold the selected time from the slider
+    const [taskTime, setTaskTime] = useState(20);
 
     const handleSliderChange = (event) => {
         setTaskTime(event.target.value);

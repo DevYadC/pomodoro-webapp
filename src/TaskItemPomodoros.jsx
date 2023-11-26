@@ -1,4 +1,4 @@
-
+import TomatoIcon from "./TomatoIcon"
 
 export default function TaskItemPomodoros({ task }) {
 
@@ -7,7 +7,7 @@ export default function TaskItemPomodoros({ task }) {
     return (
         <div className="TaskItemPomodoros">
             {task.pomodoros.map((pomodoro, pomodoroIndex) => (
-                <small key={pomodoroIndex}>🍅{pomodoro.time} sec, </small>
+                <TomatoIcon time={pomodoro.time} />
             ))}
         </div>
     )

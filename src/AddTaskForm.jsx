@@ -28,7 +28,8 @@ export default function AddTaskForm({ setTasks }) {
             <form onSubmit={addTask}>
                 <label htmlFor='taskName'>add task here: </label>
                 <input type='text' id='taskName' value={taskName} onChange={changeInputName} />
-                <button>submit</button>
+
+                <button >submit</button>
             </form>
 
         </div>

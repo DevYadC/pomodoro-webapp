@@ -1,0 +1,27 @@
+.TomatoIcon {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    /* Adjust as necessary */
+    height: 30px;
+    /* Adjust as necessary */
+}
+
+.TomatoIcon img {
+    width: 100%;
+    /* This will make the image take the full size of the container */
+    height: auto;
+}
+
+.TomatoIcon .number {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    /* Adjust if needed for visibility */
+    font-size: 14px;
+    /* Adjust as necessary */
+    font-weight: bold;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}

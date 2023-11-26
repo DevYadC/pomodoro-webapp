@@ -12,7 +12,7 @@ export default function CircularProgressWithLabel({ value, count }) {
     return (
         <div className='CircularProgress'>
             <Box position="relative" display="inline-flex">
-                <CircularProgress variant="determinate" value={value} sx={{ color: "red" }} size={300} />
+                <CircularProgress variant="determinate" value={value} sx={{ color: "#666A86" }} size={300} />
                 <Box
                     top={0}
                     left={0}
