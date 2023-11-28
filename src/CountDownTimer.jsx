@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 
 import './CountDownTimer.css'
 
-function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh }) {
+function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, setSessionComplete }) {
     const [count, setCount] = useState(sessionTime);
     const [isRunning, setIsRunning] = useState(false);
 
@@ -43,7 +43,7 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh }
 
 
             // Delay the alert to allow the state update and re-render
-            setTimeout(() => alert("Time Is Up!"), 0);
+            setSessionComplete(true);
         }
 
         return () => {
@@ -85,7 +85,7 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh }
                     </Button>
                 </div>
                 <div className='CountDownTimerPauseButton'>
-                    <Button onClick={handlePause} disabled={!isRunning} variant="contained" color="error">
+                    <Button onClick={handlePause} disabled={!isRunning} variant="contained" color="error" style={{ backgroundColor: '#d1495b' }}>
                         Pause
                     </Button>
                 </div>

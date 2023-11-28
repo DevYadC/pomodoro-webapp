@@ -28,11 +28,22 @@
     margin-top: 5%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .TaskColumn,
     .CountdownTimer {
         flex-basis: 100%;
-        /* Each item takes full width */
+        margin-top: 1%;
+        /* Adjusted margin-top for smaller screens */
+    }
+
+    .CountdownTimer {
+        /* Set CountdownTimer to appear first on smaller screens */
+        order: 1;
+    }
+
+    .TaskColumn {
+        /* Ensure TaskColumn follows CountdownTimer on smaller screens */
+        order: 2;
     }
 }

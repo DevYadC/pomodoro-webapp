@@ -1,6 +1,11 @@
 import './TaskItemForm.css'
 import { useState } from 'react';
-export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task }) {
+
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
+export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task, refresh }) {
 
     // State to hold the selected time from the slider
     const [taskTime, setTaskTime] = useState(20);
@@ -26,19 +31,24 @@ export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefr
     return (
         <div className="TaskItemForm">
             <div className="TaskFormSlider">
-                <input
-                    type="range"
-                    min="5"
-                    max="60"
-                    value={taskTime}
-                    onChange={handleSliderChange}
-                />
-                <span>{taskTime} s</span>
+                <Slider defaultValue={taskTime} aria-label="Default" valueLabelDisplay="auto" onChange={handleSliderChange} style={{ width: '150px', color: '#92B6B1' }} />
+
             </div>
 
             <div className="TaskFormButtons">
-                <button onClick={handleStartClick}>Start</button>
-                <button onClick={handleDeleteClick}>Delete</button>
+                <div className='startButton'>
+                    <Button onClick={handleStartClick} variant="contained" size="small" color="success" style={{ backgroundColor: '#92B6B1', fontSize: '0.7rem', padding: '2px 8px' }}>
+                        Start
+                    </Button>
+                </div>
+
+            </div>
+
+            <div className='deleteButton'>
+                <Tooltip title="Delete Task">
+                    <DeleteForeverTwoToneIcon onClick={handleDeleteClick} style={{ color: "#788aa3", fontSize: '20px' }} />
+                </Tooltip>
+
             </div>
         </div>
     )

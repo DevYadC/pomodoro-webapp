@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import TaskApp from './TaskApp';
-
+import Alert from '@mui/material/Alert';
 
 
 function App() {
@@ -34,12 +34,15 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-
+  const [sessionComplete, setSessionComplete] = useState(false);
 
 
   return (
     <div className="App">
-      <TaskApp tasks={tasks} setTasks={setTasks} />
+      {sessionComplete ? <Alert icon={false} style={{ backgroundColor: '#C66875', color: 'white' }} onClose={() => { setSessionComplete(false) }}>Time is up! — good job &#128516;</Alert> : null}
+
+      <TaskApp tasks={tasks} setTasks={setTasks} setSessionComplete={setSessionComplete} />
+
     </div>
   );
 }

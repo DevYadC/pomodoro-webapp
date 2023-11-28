@@ -1,9 +1,27 @@
-.TaskItemForm {
+.TaskFormButtons {
     display: flex;
-    flex-direction: column;
-    align-items: center
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    /* Aligns startButton to the left and deleteButton to the right */
+    margin-bottom: 0px;
+
+    /* Ensure it spans the full width */
 }
 
-.TaskFormButtons {
-    margin-bottom: 5px;
+
+
+.deleteButton {
+    display: flex;
+    justify-content: end;
+    margin-right: 0px;
+    margin-top: 0px;
+
+    /* No specific styling needed for right alignment due to justify-content: space-between in parent */
+}
+
+.TaskFormSlider {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 }

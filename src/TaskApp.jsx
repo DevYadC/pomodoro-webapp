@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AddTaskForm from "./AddTaskForm";
 import './TaskApp.css'
 
-export default function TaskApp({ tasks, setTasks }) {
+export default function TaskApp({ tasks, setTasks, setSessionComplete }) {
 
     //timer length for task which is currently in session on countdown
     const [sessionTime, setSessionTime] = useState(0);
@@ -33,7 +33,8 @@ export default function TaskApp({ tasks, setTasks }) {
                 sessionTime={sessionTime}
                 sessionTaskId={sessionTaskId}
                 tasks={tasks} setTasks={setTasks}
-                refresh={refresh} />
+                refresh={refresh}
+                setSessionComplete={setSessionComplete} />
 
         </div>
     )

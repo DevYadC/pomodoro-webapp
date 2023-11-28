@@ -1,0 +1,38 @@
+.taskForm {
+    display: flex;
+    flex-direction: column;
+    border: solid #666a86 1px;
+    border-radius: 10px;
+    background-color: #788aa3;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.xButton {
+    display: flex;
+    justify-content: end;
+
+}
+
+.submitButton {
+    display: flex;
+    justify-content: center;
+}
+
+.xButton,
+.submitButton,
+.taskName {
+    margin: 8px;
+}
+
+.taskName {
+    border-radius: 3px;
+    border: solid #666a86 1px;
+}
+
+.errorAlert {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+
+}
