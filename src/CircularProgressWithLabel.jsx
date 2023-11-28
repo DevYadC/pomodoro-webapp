@@ -24,7 +24,7 @@ export default function CircularProgressWithLabel({ value, count }) {
                     justifyContent="center"
 
                 >
-                    <Typography variant="caption" component="div" color="textPrimary">
+                    <Typography variant="caption" component="div" color="textPrimary" style={{ color: 'white', fontSize: '25px' }}>
                         {`${minutes}:${seconds.toString().padStart(2, '0')}`}
                     </Typography>
                 </Box>

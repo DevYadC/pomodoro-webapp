@@ -15,7 +15,8 @@ export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefr
     };
 
     const handleStartClick = () => {
-        setSessionTime(taskTime);
+        //since countDownTimer based in seconds but we want minutes, multiply by 60
+        setSessionTime(taskTime * 60);
         setSessionTaskId(task.id);
         setRefresh(prev => prev + 1);
     };

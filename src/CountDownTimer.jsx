@@ -35,7 +35,7 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, 
                 if (task.id === sessionTaskId) {
                     return {
                         ...task,
-                        pomodoros: [...task.pomodoros, { time: sessionTime }]
+                        pomodoros: [...task.pomodoros, { time: sessionTime / 60 }]
                     };
                 }
                 return task;
