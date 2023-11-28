@@ -6,7 +6,7 @@ import TaskItemPomodoros from './TaskItemPomodoros';
 import TomatoIcon from './TomatoIcon';
 
 
-export default function TaskItem({ tasks, setTasks, task, setSessionTime, setSessionTaskId, refresh, setRefresh }) {
+export default function TaskItem({ tasks, setTasks, task, setCurrentSession }) {
 
 
 
@@ -21,9 +21,8 @@ export default function TaskItem({ tasks, setTasks, task, setSessionTime, setSes
 
 
                 <TaskItemForm
-                    setSessionTaskId={setSessionTaskId}
-                    setSessionTime={setSessionTime}
-                    refresh={refresh} setRefresh={setRefresh}
+                    setCurrentSession={setCurrentSession}
+
                     tasks={tasks} setTasks={setTasks}
                     task={task} />
 

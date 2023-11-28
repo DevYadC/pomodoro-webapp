@@ -1,6 +1,6 @@
 import TaskItem from "./TaskItem"
 
-export default function TaskList({ setSessionTime, setSessionTaskId, tasks, setTasks, refresh, setRefresh }) {
+export default function TaskList({ setCurrentSession, tasks, setTasks }) {
 
 
 
@@ -10,10 +10,9 @@ export default function TaskList({ setSessionTime, setSessionTaskId, tasks, setT
                 {tasks.map((task) => (
                     <TaskItem
                         tasks={tasks} setTasks={setTasks}
-                        setSessionTime={setSessionTime}
-                        setSessionTaskId={setSessionTaskId}
+                        setCurrentSession={setCurrentSession}
                         task={task}
-                        refresh={refresh} setRefresh={setRefresh} />
+                    />
                 ))}
             </ul>
         </div>

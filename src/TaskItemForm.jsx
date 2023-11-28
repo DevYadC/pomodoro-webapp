@@ -5,7 +5,7 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
-export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task }) {
+export default function TaskItemForm({ setCurrentSession, tasks, setTasks, task }) {
 
     // State to hold the selected time from the slider
     const [taskTime, setTaskTime] = useState(20);
@@ -16,9 +16,7 @@ export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefr
 
     const handleStartClick = () => {
         //since countDownTimer based in seconds but we want minutes, multiply by 60
-        setSessionTime(taskTime * 60);
-        setSessionTaskId(task.id);
-        setRefresh(prev => prev + 1);
+        setCurrentSession(prevSession => ({ ...prevSession, time: taskTime * 60, taskId: task.id }))
     };
 
 

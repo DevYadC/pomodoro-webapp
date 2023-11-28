@@ -5,19 +5,19 @@ import Button from '@mui/material/Button';
 
 import './CountDownTimer.css'
 
-function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, setSessionComplete }) {
-    const [count, setCount] = useState(sessionTime);
+function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete }) {
+    const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
-        setCount(sessionTime);
-        if (sessionTime > 0) {
+        setCount(currentSession.time);
+        if (currentSession.time > 0) {
             setIsRunning(true);
         }
         else {
             setIsRunning(false);
         }
-    }, [sessionTime, refresh]);
+    }, [currentSession]);
 
     useEffect(() => {
         let intervalId;
@@ -32,10 +32,10 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, 
 
             // Update tasks state to add a pomodoro
             setTasks(tasks.map(task => {
-                if (task.id === sessionTaskId) {
+                if (task.id === currentSession.taskId) {
                     return {
                         ...task,
-                        pomodoros: [...task.pomodoros, { time: sessionTime / 60 }]
+                        pomodoros: [...task.pomodoros, { time: currentSession.time / 60 }]
                     };
                 }
                 return task;
@@ -51,7 +51,7 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, 
                 clearInterval(intervalId);
             }
         };
-    }, [isRunning, count, sessionTaskId, tasks, setTasks, sessionTime]);
+    }, [isRunning, count, tasks, setTasks, currentSession]);
 
 
     const handleStart = () => {
@@ -62,13 +62,13 @@ function CountdownTimer({ sessionTime, sessionTaskId, tasks, setTasks, refresh, 
 
     const handleReset = () => {
         setIsRunning(false);
-        setCount(sessionTime); // Reset the timer to the initial session time
+        setCount(currentSession.time); // Reset the timer to the initial session time
     };
 
     const handlePause = () => {
         setIsRunning(false);
     };
-    const progress = (count / sessionTime) * 100;
+    const progress = (count / currentSession.time) * 100;
     console.log(progress)
     return (
         <div className='CountDownTimer'>
