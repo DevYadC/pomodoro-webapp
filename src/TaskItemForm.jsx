@@ -5,7 +5,7 @@ import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
-export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task, refresh }) {
+export default function TaskItemForm({ setSessionTaskId, setSessionTime, setRefresh, tasks, setTasks, task }) {
 
     // State to hold the selected time from the slider
     const [taskTime, setTaskTime] = useState(20);

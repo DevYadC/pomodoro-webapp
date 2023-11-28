@@ -14,7 +14,12 @@ export default function TaskApp({ tasks, setTasks, setSessionComplete }) {
     //to restart countdown even if sessionTime does not change
     const [refresh, setRefresh] = useState(0);
 
-
+    const [currentSession, setCurrentSession] = useState(
+        {
+            currentSessionTime: 0,
+            currentSessionTaskId: 1
+        }
+    )
 
     return (
         <div className="TaskApp">
