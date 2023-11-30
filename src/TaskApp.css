@@ -26,6 +26,7 @@
     margin: 1%;
     /* Optional: for spacing around items */
     margin-top: 5%;
+
 }
 
 @media (max-width: 700px) {
@@ -45,5 +46,7 @@
     .TaskColumn {
         /* Ensure TaskColumn follows CountdownTimer on smaller screens */
         order: 2;
+        margin-right: 45px;
+
     }
 }
