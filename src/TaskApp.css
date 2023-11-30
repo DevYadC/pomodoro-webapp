@@ -46,6 +46,7 @@
     .CountdownTimer {
         /* Set CountdownTimer to appear first on smaller screens */
         order: 1;
+
     }
 
     .TaskColumn {
