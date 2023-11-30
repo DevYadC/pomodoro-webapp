@@ -13,7 +13,7 @@ function App() {
     {
       id: uuidv4(),
       name: "code",
-      pomodoros: [{ time: 15 }, { time: 20 }, { time: 20 }, { time: 20 }, { time: 10 }, { time: 20 }, { time: 20 }, { time: 20 }]
+      pomodoros: [{ time: 15 }, { time: 20 }, { time: 20 }, { time: 20 }, { time: 10 }, { time: 20 }, { time: 20 }, { time: 20 }, { time: 20 }, { time: 20 }, { time: 10 }, { time: 20 }]
     },
     {
       id: uuidv4(),
