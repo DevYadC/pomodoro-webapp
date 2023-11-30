@@ -22,7 +22,7 @@ export default function TaskName({ taskName }) {
             border: '1px solid black',
             borderRadius: '16px', // Gives the div rounded corners like a chip
             padding: '0 12px', // Padding inside the chip, adjust as needed
-            fontSize: '18px',
+            fontSize: '24px',
             fontWeight: 'bold',
             display: 'inline-flex', // Makes the div inline-level but with flexbox capabilities
             alignItems: 'center', // Centers items vertically inside the chip
