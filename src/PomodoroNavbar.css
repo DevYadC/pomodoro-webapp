@@ -6,12 +6,18 @@
 .navbar-light .nav-link {
     border-right: 2px solid #40435E;
     padding-right: 5px;
+
     color: white;
+}
+
+.nav-link {
+    font-size: x-large;
 }
 
 .navbar-brand {
     border-left: 2px solid #40435E;
     padding-left: 5px;
+    font-size: xx-large;
 }
 
 .navbar-light .nav-link:hover {

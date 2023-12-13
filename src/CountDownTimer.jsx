@@ -91,17 +91,17 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
 
             <div className='CountDownTimerButtons'>
                 <div className='CountDownTimerStartButton'>
-                    <Button onClick={handleStart} disabled={isRunning} variant="contained" color="success" style={{ backgroundColor: '#92B6B1' }}>
+                    <Button onClick={handleStart} disabled={isRunning} variant="contained" color="success" style={{ backgroundColor: '#92B6B1', fontSize: '18px' }}>
                         Start
                     </Button>
                 </div>
                 <div className='CountDownTimerPauseButton'>
-                    <Button onClick={handlePause} disabled={!isRunning} variant="contained" color="error" style={{ backgroundColor: '#d1495b' }}>
+                    <Button onClick={handlePause} disabled={!isRunning} variant="contained" color="error" style={{ backgroundColor: '#d1495b', fontSize: '18px' }}>
                         Pause
                     </Button>
                 </div>
                 <div className='CountDownTimerResetButton'>
-                    <Button onClick={handleReset} variant="contained" color="secondary" style={{ backgroundColor: '#666A86' }}>
+                    <Button onClick={handleReset} variant="contained" color="secondary" style={{ backgroundColor: '#666A86', fontSize: '18px' }}>
                         Reset
                     </Button>
                 </div>

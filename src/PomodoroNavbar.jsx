@@ -7,7 +7,7 @@ import './PomodoroNavbar.css';
 function PomodoroNavbar() {
     return (
         <Navbar expand="lg" className='PomodoroNavbar' >
-            <Container>
+            <Container >
 
                 <Navbar.Brand>Pomodoro Tracker</Navbar.Brand>
 

@@ -48,7 +48,7 @@ export default function AddTaskForm({ setTasks }) {
                         <Button onClick={toggleFormDisplay} style={{
                             backgroundColor: '#C66875',
                             color: 'white',
-                            fontSize: '0.7rem',
+                            fontSize: '0.9rem',
                             padding: '3px 6px',// Reduced padding
                             minWidth: '0px', // Set minimum width
                             height: '20px'
@@ -58,7 +58,7 @@ export default function AddTaskForm({ setTasks }) {
                     <div className='submitButton'>
                         <Button onClick={addTask} style={{
                             backgroundColor: '#b2c9ab', color: 'white',
-                            fontSize: '0.7rem',
+                            fontSize: '0.9rem',
                             padding: '3px 6px', // Reduced padding
                             width: '20px', // Set minimum width
                             height: '20px'

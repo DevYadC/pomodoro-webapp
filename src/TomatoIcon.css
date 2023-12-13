@@ -1,9 +1,9 @@
 .TomatoIcon {
     position: relative;
     display: inline-block;
-    width: 40px;
+    width: 50px;
     /* Adjust as necessary */
-    height: 40px;
+    height: 48px;
     /* Adjust as necessary */
 }
 
@@ -20,7 +20,7 @@
     transform: translate(-50%, -50%);
     color: white;
     /* Adjust if needed for visibility */
-    font-size: 18px;
+    font-size: 23px;
     /* Adjust as necessary */
     font-weight: bold;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);

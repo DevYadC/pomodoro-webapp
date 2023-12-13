@@ -36,7 +36,7 @@ export default function TaskItemForm({ setCurrentSession, tasks, setTasks, task 
 
             <div className="TaskFormButtons">
                 <div className='startButton'>
-                    <Button onClick={handleStartClick} variant="contained" size="small" color="success" style={{ backgroundColor: '#92B6B1', fontSize: '0.7rem', padding: '2px 8px' }}>
+                    <Button onClick={handleStartClick} variant="contained" size="small" color="success" style={{ backgroundColor: '#92B6B1', fontSize: '0.9rem', padding: '2px 8px' }}>
                         Start
                     </Button>
                 </div>
@@ -45,7 +45,7 @@ export default function TaskItemForm({ setCurrentSession, tasks, setTasks, task 
 
             <div className='deleteButton'>
                 <Tooltip title="Delete Task">
-                    <DeleteForeverTwoToneIcon onClick={handleDeleteClick} style={{ color: "#788aa3", fontSize: '20px' }} />
+                    <DeleteForeverTwoToneIcon onClick={handleDeleteClick} style={{ color: "#788aa3", fontSize: '23px' }} />
                 </Tooltip>
 
             </div>
