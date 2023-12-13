@@ -9,10 +9,14 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
     const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
 
+
+
+
     useEffect(() => {
         setCount(currentSession.time);
         if (currentSession.time > 0) {
             setIsRunning(true);
+            setSessionComplete(false);
         }
         else {
             setIsRunning(false);
@@ -44,6 +48,7 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
 
             // Delay the alert to allow the state update and re-render
             setSessionComplete(true);
+
         }
 
         return () => {
