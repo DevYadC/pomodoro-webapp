@@ -17,20 +17,18 @@ export default function () {
                     marginTop: '5%',
                     '& > :not(style)': {
                         m: 1,
-                        width: 500,
+                        width: 600,
                         height: 'auto',
 
 
                     },
                 }}
             >
-                <Paper style={{ backgroundColor: '#666A86' }} elevation={3} ><div className="WhyParagraph" style={{ margin: '10px', color: '#EEEEEE', fontWeight: 'bold' }}>
+                <Paper style={{ backgroundColor: '#666A86' }} elevation={3} ><div className="WhyParagraph" style={{ margin: '10px', color: '#EEEEEE', fontWeight: 'bold', fontSize: '25px' }}>
                     <h1>Why?</h1>
+
                     <p>
-                        The Pomodoro Technique is founded on the principle that our brains have an optimal focus span of about 25 minutes. Research suggests that setting a fixed duration for tasks significantly enhances concentration, as our minds aren't preoccupied with thoughts of when to take the next break. This technique leverages this insight to boost productivity and focus.
-                    </p>
-                    <p>
-                        When I started learning to code, I discovered the Pomodoro method to be incredibly effective. Yet, I felt something was missing – a way to track my progress. My solution was to draw little tomatoes after each completed session. This simple act of tracking inspired me to develop this app, my second coding project. It was both a fun and enlightening journey.
+                        When I started learning to code, I discovered the Pomodoro method to be incredibly effective. Yet, I felt something was missing, a way to track my progress. My solution was to draw little tomatoes after each completed session. This simple act of tracking inspired me to develop this app, my second coding project. It was both a fun and enlightening journey.
                     </p>
                     <p>
                         I hope you find this app enjoyable and useful. Wishing you the best in your endeavors.
