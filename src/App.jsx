@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import Alert from '@mui/material/Alert';
+import { Alert, Snackbar } from '@mui/material';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import TaskApp from './TaskApp';
@@ -24,12 +24,19 @@ function App() {
   });
 
   useEffect(() => {
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
   const [sessionComplete, setSessionComplete] = useState(false);
 
+  // New state for notification alert
+  const [showNotificationAlert, setShowNotificationAlert] = useState(true);
 
+  // Close the notification alert
+  const handleCloseNotification = () => {
+    setShowNotificationAlert(false);
+  };
 
   return (
     <Router>
@@ -41,6 +48,13 @@ function App() {
             Time is up! — good job &#128516;
           </Alert>
         ) : null}
+
+        <Snackbar open={showNotificationAlert} autoHideDuration={6000} onClose={handleCloseNotification} anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+          style={{ marginTop: '60px' }} >
+          <Alert onClose={handleCloseNotification} severity="info" sx={{ width: '100%' }}>
+            Please enable notifications so Pomodoro Tracker can let you know when time is up! 🍅
+          </Alert>
+        </Snackbar>
 
         <Routes>
           <Route path="/home" element={<TaskApp tasks={tasks} setTasks={setTasks} setSessionComplete={setSessionComplete} />} />

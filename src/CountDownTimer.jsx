@@ -2,20 +2,27 @@ import React, { useState, useEffect } from 'react';
 import CircularProgressWithLabel from './CircularProgressWithLabel'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import bellSound from './sounds/bell.mp3';
+
 import './CountDownTimer.css'
 
 function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete }) {
     const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
 
-    const alarmSound = new Audio(bellSound);
 
+    // Function to request notification permission
+    useEffect(() => {
+        Notification.requestPermission();
+    }, []);
 
-    const playAlarm = () => {
-        alarmSound.play();
-    }
-
+    const sendNotification = () => {
+        if (Notification.permission === 'granted') {
+            new Notification('Timer Finished🍅', {
+                body: 'Your pomodoro session is complete!🍅',
+                // Optional: Add an icon URL here
+            });
+        }
+    };
 
 
     useEffect(() => {
@@ -40,7 +47,8 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
         } else if (count === 0 && isRunning) {
             setIsRunning(false); // Stop the timer
             setSessionComplete(true);
-            playAlarm();
+            sendNotification();//Send timer compplete notification
+
             // Update tasks state to add a pomodoro
             setTasks(tasks.map(task => {
                 if (task.id === currentSession.taskId) {
