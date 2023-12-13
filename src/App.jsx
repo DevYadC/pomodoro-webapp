@@ -14,8 +14,8 @@ import DonatePage from './DonatePage'; // Import DonatePage
 
 function App() {
   const exampleTasks = [
-    { id: uuidv4(), name: 'code', pomodoros: [15, 20, 20, 20, 10] },
-    { id: uuidv4(), name: 'read', pomodoros: [10, 20, 20, 10] },
+    { id: uuidv4(), name: 'code', pomodoros: [{ time: 15 }, { time: 15 }, { time: 25 }, { time: 15 }, { time: 15 }, { time: 15 }, { time: 20 }, { time: 15 }] },
+    { id: uuidv4(), name: 'study', pomodoros: [{ time: 25 }, { time: 15 }, { time: 25 }, { time: 25 }] }
   ];
 
   const [tasks, setTasks] = useState(() => {
