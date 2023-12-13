@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import CircularProgressWithLabel from './CircularProgressWithLabel'
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import bellSound from './sounds/bell.mp3';
 import './CountDownTimer.css'
 
 function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete }) {
     const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
 
+    const alarmSound = new Audio(bellSound);
+
+
+    const playAlarm = () => {
+        alarmSound.play();
+    }
 
 
 
@@ -33,7 +39,8 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
             }, 1000);
         } else if (count === 0 && isRunning) {
             setIsRunning(false); // Stop the timer
-
+            setSessionComplete(true);
+            playAlarm();
             // Update tasks state to add a pomodoro
             setTasks(tasks.map(task => {
                 if (task.id === currentSession.taskId) {
@@ -46,8 +53,7 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
             }));
 
 
-            // Delay the alert to allow the state update and re-render
-            setSessionComplete(true);
+
 
         }
 

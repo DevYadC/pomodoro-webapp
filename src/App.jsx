@@ -9,7 +9,7 @@ import PomodoroNavbar from './PomodoroNavbar';
 import WhyPage from './WhyPage'; // Import WhyPage
 import DonatePage from './DonatePage'; // Import DonatePage
 
-import bellSound from './sounds/bell.mp3';
+
 
 
 function App() {
@@ -28,15 +28,7 @@ function App() {
 
   const [sessionComplete, setSessionComplete] = useState(false);
 
-  const alarmSound = new Audio(bellSound);
 
-  const playAlarm = () => {
-    alarmSound.play();
-  }
-
-  if (sessionComplete === true) {
-    playAlarm();
-  }
 
   return (
     <Router>

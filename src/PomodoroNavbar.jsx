@@ -6,15 +6,17 @@ import './PomodoroNavbar.css';
 
 function PomodoroNavbar() {
     return (
-        <Navbar expand="lg" className='PomodoroNavbar'>
+        <Navbar expand="lg" className='PomodoroNavbar' >
             <Container>
-                <LinkContainer to="/home">
-                    <Navbar.Brand>Pomodoro Tracker</Navbar.Brand>
-                </LinkContainer>
+
+                <Navbar.Brand>Pomodoro Tracker</Navbar.Brand>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-
+                        <LinkContainer to="/home">
+                            <Nav.Link>Home</Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/why">
                             <Nav.Link>Why?</Nav.Link>
                         </LinkContainer>
