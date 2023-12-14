@@ -49,7 +49,7 @@ function App() {
           </Alert>
         ) : null}
 
-        <Snackbar open={showNotificationAlert} autoHideDuration={6000} onClose={handleCloseNotification} anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+        <Snackbar open={showNotificationAlert} autoHideDuration={4000} onClose={handleCloseNotification} anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
           style={{ marginTop: '60px' }} >
           <Alert onClose={handleCloseNotification} severity="info" sx={{ width: '100%' }}>
             Please enable notifications so Pomodoro Tracker can let you know when time is up! 🍅

@@ -1,19 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import CircularProgressWithLabel from './CircularProgressWithLabel'
+import React, { useState, useEffect, useRef } from 'react';
+import CircularProgressWithLabel from './CircularProgressWithLabel';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
-import './CountDownTimer.css'
+import './CountDownTimer.css';
 
 function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete }) {
     const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
+    const workerRef = useRef(null);
 
+    const updateTasks = () => {
+        setTasks(tasks.map(task => {
+            if (task.id === currentSession.taskId) {
+                return {
+                    ...task,
+                    pomodoros: [...task.pomodoros, { time: currentSession.time / 60 }]
+                };
+            }
+            return task;
+        }));
+    };
 
-    // Function to request notification permission
+    const timerComplete = () => {
+        setIsRunning(false);
+        setSessionComplete(true);
+        sendNotification();
+        updateTasks();
+        console.log(`session complete: ${currentSession}`)
+    };
+
     useEffect(() => {
-        Notification.requestPermission();
-    }, []);
+        workerRef.current = new Worker('/timerWorker.js');
+
+        workerRef.current.onmessage = (e) => {
+            setCount(e.data);
+            if (e.data === 0) {
+                timerComplete();
+            }
+        }
+
+        return () => {
+            workerRef.current.terminate();
+        };
+    }, [currentSession]);
+
+    useEffect(() => {
+        setCount(currentSession.time);
+        if (currentSession.time > 0) {
+            setIsRunning(true);
+            setSessionComplete(false);
+            console.log(currentSession)
+            workerRef.current.postMessage({ action: 'start', count: currentSession.time });
+        }
+        else {
+            setIsRunning(false);
+        }
+    }, [currentSession, setSessionComplete]);
 
     const sendNotification = () => {
         if (Notification.permission === 'granted') {
@@ -25,70 +67,31 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
     };
 
 
-    useEffect(() => {
-        setCount(currentSession.time);
-        if (currentSession.time > 0) {
-            setIsRunning(true);
-            setSessionComplete(false);
-        }
-        else {
-            setIsRunning(false);
-        }
-    }, [currentSession]);
 
-    useEffect(() => {
-        let intervalId;
-
-        if (isRunning && count > 0) {
-
-            intervalId = setInterval(() => {
-                setCount(prevCount => prevCount - 1);
-            }, 1000);
-        } else if (count === 0 && isRunning) {
-            setIsRunning(false); // Stop the timer
-            setSessionComplete(true);
-            sendNotification();//Send timer compplete notification
-
-            // Update tasks state to add a pomodoro
-            setTasks(tasks.map(task => {
-                if (task.id === currentSession.taskId) {
-                    return {
-                        ...task,
-                        pomodoros: [...task.pomodoros, { time: currentSession.time / 60 }]
-                    };
-                }
-                return task;
-            }));
-
-
-
-
-        }
-
-        return () => {
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-        };
-    }, [isRunning, count, tasks, setTasks, currentSession]);
 
 
     const handleStart = () => {
-        if (count > 0) {
+        if (count > 0 && !isRunning) {
             setIsRunning(true);
+            workerRef.current.postMessage({ action: 'start', count: count });
+        }
+    };
+
+    const handlePause = () => {
+        if (isRunning) {
+            setIsRunning(false);
+            workerRef.current.postMessage({ action: 'stop' });
         }
     };
 
     const handleReset = () => {
         setIsRunning(false);
-        setCount(currentSession.time); // Reset the timer to the initial session time
+        setCount(currentSession.time);
+        workerRef.current.postMessage({ action: 'reset', count: currentSession.time });
     };
 
-    const handlePause = () => {
-        setIsRunning(false);
-    };
     const progress = (count / currentSession.time) * 100;
-    console.log(progress)
+
     return (
         <div className='CountDownTimer'>
             <div className='ProgressCircle'>
@@ -116,9 +119,7 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
 
             </div>
         </div>
-
     );
 }
 
 export default CountdownTimer;
-

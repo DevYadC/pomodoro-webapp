@@ -7,7 +7,7 @@ export default function TomatoIcon({ time }) {
                 src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/49707/tomato-emoji-clipart-sm.png"
                 alt="Tomato"
             />
-            <span class="number">{time}</span>
+            <span className="number">{time}</span>
         </div>
     );
 }
