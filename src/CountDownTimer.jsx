@@ -24,8 +24,8 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
     const timerComplete = () => {
         setIsRunning(false);
         setSessionComplete(true);
-        sendNotification();
         updateTasks();
+        sendNotification();
         console.log(`session complete: ${currentSession}`)
     };
 
