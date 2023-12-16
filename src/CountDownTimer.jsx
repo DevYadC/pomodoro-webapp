@@ -9,6 +9,14 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
     const [isRunning, setIsRunning] = useState(false);
     const workerRef = useRef(null);
 
+    useEffect(() => {
+        Notification.requestPermission().then(function (permission) {
+            // This function can be used to handle the permission state.
+            // For instance, updating a state variable or logging to console.
+            console.log("Notification permission: ", permission);
+        });
+    }, []);
+
     const updateTasks = () => {
         setTasks(tasks.map(task => {
             if (task.id === currentSession.taskId) {
