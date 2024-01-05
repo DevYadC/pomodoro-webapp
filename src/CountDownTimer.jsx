@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import './CountDownTimer.css';
 
-function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete }) {
+function CountdownTimer({ currentSession, setCurrentSession, tasks, setTasks, setSessionComplete }) {
     const [count, setCount] = useState(currentSession.time);
     const [isRunning, setIsRunning] = useState(false);
     const workerRef = useRef(null);
@@ -74,8 +74,8 @@ function CountdownTimer({ currentSession, tasks, setTasks, setSessionComplete })
 
     const handleStart = () => {
         if (count > 0 && !isRunning) {
-            setIsRunning(true);
-            workerRef.current.postMessage({ action: 'start', count: count });
+            setCurrentSession(prevSession => ({ ...prevSession, time: prevSession.time, taskId: prevSession.taskId }))
+
         }
     };
 
