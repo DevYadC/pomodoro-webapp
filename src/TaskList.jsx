@@ -9,6 +9,7 @@ export default function TaskList({ setCurrentSession, tasks, setTasks }) {
             <ul>
                 {tasks.map((task) => (
                     <TaskItem
+                        key={task.id}
                         tasks={tasks} setTasks={setTasks}
                         setCurrentSession={setCurrentSession}
                         task={task}

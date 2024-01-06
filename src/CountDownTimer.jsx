@@ -11,16 +11,22 @@ function CountdownTimer({ currentSession, setCurrentSession, tasks, setTasks, se
 
 
 
+    const tasksRef = useRef(tasks);
+    tasksRef.current = tasks;
+
     const updateTasks = () => {
-        setTasks(tasks.map(task => {
+        console.log(`update tasks called for session: ${currentSession.taskId}`);
+        const updatedTasks = tasksRef.current.map(task => {
             if (task.id === currentSession.taskId) {
+                console.log(`update tasks found matching id with session time: ${currentSession.time}`);
                 return {
                     ...task,
                     pomodoros: [...task.pomodoros, { time: currentSession.time / 60 }]
                 };
             }
             return task;
-        }));
+        });
+        setTasks(updatedTasks);
     };
 
     const timerComplete = () => {
@@ -74,7 +80,9 @@ function CountdownTimer({ currentSession, setCurrentSession, tasks, setTasks, se
 
     const handleStart = () => {
         if (count > 0 && !isRunning) {
-            setCurrentSession(prevSession => ({ ...prevSession, time: prevSession.time, taskId: prevSession.taskId }))
+            setIsRunning(true);
+            workerRef.current.postMessage({ action: 'start', count: count });
+            // setCurrentSession(prevSession => ({ ...prevSession, time: prevSession.time, taskId: prevSession.taskId }))
 
         }
     };
