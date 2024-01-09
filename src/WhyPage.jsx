@@ -28,8 +28,9 @@ export default function () {
                     <h1>Why?</h1>
 
                     <p>
-                        When I started learning to code, I discovered the Pomodoro method to be incredibly effective. Yet, I felt something was missing, a way to track my progress. My solution was to draw little tomatoes after each completed session. This simple act of tracking inspired me to develop this app, my second coding project. It was both a fun and enlightening journey.
+                        When I started learning to code, I discovered the Pomodoro method to be incredibly effective. Yet, I felt something was missing, a way to track my progress.
                     </p>
+                    <p>My solution was to draw little tomatoes after each completed session. This simple act of tracking inspired me to develop this app, my second coding project. It was both a fun and enlightening journey.</p>
                     <p>
                         I hope you find this app enjoyable and useful. Wishing you the best in your endeavors.
                     </p>
